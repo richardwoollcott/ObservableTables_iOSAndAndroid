@@ -1,13 +1,33 @@
-﻿using Android.App;
+﻿              using Android.App;
 using Android.Widget;
 using Android.OS;
+using ObservableTables.ViewModel;
+using Android.Views;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace ObservableTables.Droid
 {
-	[Activity (Label = "ObservableTables", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity (Label = "Tasks", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
-		int count = 1;
+		private ListView taskList;
+
+		public ListView TaskList
+		{
+			get
+			{
+				return taskList
+					?? (taskList = FindViewById<ListView>(Resource.Id.tasksListView));
+			}
+		}
+
+		public TaskListViewModel Vm
+		{
+			get
+			{
+				return App.Locator.TaskList;
+			}
+		}
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -16,13 +36,21 @@ namespace ObservableTables.Droid
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
+			TaskList.Adapter = Vm.TodoTasks.GetAdapter(GetTaskAdapter);
+		}
+
+		private View GetTaskAdapter(int position, TaskModel taskModel, View convertView)
+		{
+			// Not reusing views here
+			convertView = LayoutInflater.Inflate(Resource.Layout.TaskTemplate, null);
+
+			var title = convertView.FindViewById<TextView>(Resource.Id.NameTextView);
+			title.Text = taskModel.Name;
+
+			var desc = convertView.FindViewById<TextView>(Resource.Id.DescriptionTextView);
+			desc.Text = taskModel.Notes;
+
+			return convertView;
 		}
 	}
 }
