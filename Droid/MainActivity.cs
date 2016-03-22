@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight.Helpers;
 
 namespace ObservableTables.Droid
 {
-	[Activity (Label = "Tasks", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity (Label = "Tasks", Theme = "@style/AppTheme", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
 		private ListView taskList;
@@ -35,6 +35,12 @@ namespace ObservableTables.Droid
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
+
+			var toolbar = FindViewById<Toolbar> (Resource.Id.tasksToolbar);
+			//Toolbar will now take on default Action Bar characteristics
+			SetActionBar (toolbar);
+			//You can now use and reference the ActionBar
+			ActionBar.Title = "Hello from Toolbar";
 
 			TaskList.Adapter = Vm.TodoTasks.GetAdapter(GetTaskAdapter);
 		}

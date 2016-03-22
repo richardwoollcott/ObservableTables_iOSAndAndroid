@@ -76,7 +76,11 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\TaskTemplate.axml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
   </ItemGroup>
   <Import Project="..\ObservableTables\ObservableTables.projitems" Label="Shared" Condition="Exists('..\ObservableTables\ObservableTables.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\values-v21\" />
+  </ItemGroup>
 </Project>

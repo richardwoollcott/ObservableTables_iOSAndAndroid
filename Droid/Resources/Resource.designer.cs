@@ -46,17 +46,20 @@ namespace ObservableTables.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int NameTextView = 2131034114;
+			// aapt resource value: 0x7f060003
+			public const int NameTextView = 2131099651;
 			
-			// aapt resource value: 0x7f050003
-			public const int NotesTextView = 2131034115;
+			// aapt resource value: 0x7f060004
+			public const int NotesTextView = 2131099652;
 			
-			// aapt resource value: 0x7f050001
-			public const int TaskTemplateRoot = 2131034113;
+			// aapt resource value: 0x7f060002
+			public const int TaskTemplateRoot = 2131099650;
 			
-			// aapt resource value: 0x7f050000
-			public const int tasksListView = 2131034112;
+			// aapt resource value: 0x7f060001
+			public const int tasksListView = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int tasksToolbar = 2131099648;
 			
 			static Id()
 			{
@@ -124,6 +127,22 @@ namespace ObservableTables.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int AppTheme = 2131034112;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
