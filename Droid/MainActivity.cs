@@ -47,7 +47,7 @@ namespace ObservableTables.Droid
 			var title = convertView.FindViewById<TextView>(Resource.Id.NameTextView);
 			title.Text = taskModel.Name;
 
-			var desc = convertView.FindViewById<TextView>(Resource.Id.DescriptionTextView);
+			var desc = convertView.FindViewById<TextView>(Resource.Id.NotesTextView);
 			desc.Text = taskModel.Notes;
 
 			return convertView;
