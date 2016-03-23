@@ -1,8 +1,10 @@
-﻿              using Android.App;
+﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using ObservableTables.ViewModel;
 using Android.Views;
+
+using ObservableTables.ViewModel;
+
 using GalaSoft.MvvmLight.Helpers;
 
 namespace ObservableTables.Droid
@@ -12,12 +14,23 @@ namespace ObservableTables.Droid
 	{
 		private ListView taskList;
 
+		private Button addTaskButton;
+
 		public ListView TaskList
 		{
 			get
 			{
 				return taskList
 					?? (taskList = FindViewById<ListView>(Resource.Id.tasksListView));
+			}
+		}
+
+		public Button AddTaskButton
+		{
+			get
+			{
+				return addTaskButton
+					?? (addTaskButton = FindViewById<Button>(Resource.Id.addTaskButton));
 			}
 		}
 
@@ -39,10 +52,16 @@ namespace ObservableTables.Droid
 			var toolbar = FindViewById<Toolbar> (Resource.Id.tasksToolbar);
 			//Toolbar will now take on default Action Bar characteristics
 			SetActionBar (toolbar);
-			//You can now use and reference the ActionBar
-			ActionBar.Title = "Hello from Toolbar";
 
 			TaskList.Adapter = Vm.TodoTasks.GetAdapter(GetTaskAdapter);
+
+			//ensure that the Event will be present
+			AddTaskButton.Click += (sender, e) => {};
+
+			// Actuate the AddTaskCommand on the VM.
+			AddTaskButton.SetCommand(
+				"Click",
+				Vm.AddTaskCommand);
 		}
 
 		private View GetTaskAdapter(int position, TaskModel taskModel, View convertView)
