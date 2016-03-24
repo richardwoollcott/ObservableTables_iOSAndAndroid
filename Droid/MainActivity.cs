@@ -53,6 +53,7 @@ namespace ObservableTables.Droid
 			//Toolbar will now take on default Action Bar characteristics
 			SetActionBar (toolbar);
 
+			Vm.Init ();
 			TaskList.Adapter = Vm.TodoTasks.GetAdapter(GetTaskAdapter);
 
 			//ensure that the Event will be present
