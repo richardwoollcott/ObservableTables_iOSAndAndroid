@@ -40,7 +40,7 @@ namespace ObservableTables.ViewModel
 			return tasks;
 		}
 
-		public void Init()
+		public void Initialize()
 		{
 			if (TodoTasks != null)
 			{
