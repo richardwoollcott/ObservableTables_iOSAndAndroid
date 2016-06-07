@@ -27,6 +27,8 @@ namespace ObservableTables.iOS
 		{
 			base.ViewDidLoad();
 
+			Vm.Initialize ();
+
 			AddTaskButton = new UIBarButtonItem(UIBarButtonSystemItem.Add);
 			this.NavigationItem.SetLeftBarButtonItem (AddTaskButton, false);
 
